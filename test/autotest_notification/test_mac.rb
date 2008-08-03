@@ -1,19 +1,18 @@
 require File.dirname(__FILE__) + '/../test_helper.rb'
 
 class TestMac < Test::Unit::TestCase
-
-  def test_notify_without_voice
-    Object.const_set :SPEAKING, false
-    AutotestNotification::Mac.expects(:system).with("growlnotify -n autotest --image image -p 0 -m 'msg' title")
-    AutotestNotification::Mac.notify("title", "msg", "image", 1)
+  
+  def test_if_mac_register_handler
+    assert AutotestNotification::Notify.handlers.include?(AutotestNotification::Mac::Notify)
   end
-
-  def test_notify_with_voice
-    Object.const_set :SPEAKING, true
-    AutotestNotification::Mac.expects(:system).with("growlnotify -n autotest --image image -p 0 -m 'msg' title")
-    AutotestNotification::Mac.expects(:system).with("say 1 test failed.")
-    AutotestNotification::Mac.notify("title", "msg", "image", 1)
+  
+  def test_understands_so_when_so_is_a_mac
+    assert AutotestNotification::Mac::Notify.understands_so?("universal-darwin9.0")
   end
-
+  
+  def test_understands_so_when_so_is_noT_a_mac
+    assert !AutotestNotification::Mac::Notify.understands_so?("linux")
+  end
+  
 end
 

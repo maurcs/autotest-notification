@@ -8,6 +8,7 @@ config/hoe.rb
 config/requirements.rb
 lib/autotest_notification.rb
 lib/autotest_notification/version.rb
+lib/autotest_notification/notify.rb
 lib/autotest_notification/linux.rb
 lib/autotest_notification/windows.rb
 lib/autotest_notification/cygwin.rb

@@ -1,14 +1,14 @@
 module AutotestNotification
   class Doom
     class << self
-      def image(total, failures)
-        "#{IMAGES_DIRECTORY}/doom/doom_#{percent(total, failures)}.png"
+      def image(total, failures, images_directory)
+        "#{images_directory}/doom/doom_#{percent(total, failures)}.png"
       end
 
-      def play_sound(total, failures)
+      def play_sound(total, failures, plataform)
         sound_file = "#{File.expand_path(File.dirname(__FILE__) + "/../../sounds/doom/")}/#{percent(total, failures)}.wav"
         
-        case RUBY_PLATFORM
+        case plataform
         when /darwin/
           `#{File.expand_path(File.dirname(__FILE__) + "/../../bin/")}/playsound #{sound_file}`
         when /linux/

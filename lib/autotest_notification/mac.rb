@@ -2,7 +2,6 @@ module AutotestNotification
   module Mac
     class Notify < AutotestNotification::Notify
       AutotestNotification::Notify.add_handler(self)
-      
       @last_test_failed = false
 
       class << self

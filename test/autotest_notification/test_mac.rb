@@ -2,6 +2,10 @@ require File.dirname(__FILE__) + '/../test_helper.rb'
 
 class TestMac < Test::Unit::TestCase
   
+  def test_if_last_test_failed_instance_variable_is_defined
+    assert !AutotestNotification::Mac::Notify.instance_variable_get(:@last_test_failed)
+  end
+  
   def test_if_mac_register_handler
     assert AutotestNotification::Notify.handlers.include?(AutotestNotification::Mac::Notify)
   end

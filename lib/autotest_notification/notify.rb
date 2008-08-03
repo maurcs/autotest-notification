@@ -63,7 +63,7 @@ module AutotestNotification
       end
 
       def rspec_message(examples, failures, pendings)
-        "#{pluralize('example', examples)}, #{pluralize('failure', failures)}, #{pendings} pending"
+        "#{pluralize('example', examples)}, #{pluralize('failure', failures)}, #{pluralize('pending', pendings)}"
       end
     end
   end

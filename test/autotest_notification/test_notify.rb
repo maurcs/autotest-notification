@@ -25,8 +25,18 @@ class TestNotify < Test::Unit::TestCase
     assert_equal nil, AutotestNotification::Notify.guess("so")
   end
   
-  def test_notify
+  def test_notify_when_speeking_is_false
+    AutotestNotification::Notify.const_set :SPEAKING, false
     notify_mock = mock
+    notify_mock.expects(:notify).with("title", "msg", "img", 1, 0, 0)
+    AutotestNotification::Notify.expects(:guess).with(RUBY_PLATFORM).returns(notify_mock)
+    AutotestNotification::Notify.notify("title", "msg", "img", 1, 0, 0)
+  end
+  
+  def test_notify_when_speeking_is_true
+    AutotestNotification::Notify.const_set :SPEAKING, true
+    notify_mock = mock
+    notify_mock.expects(:say).with(1, 0, notify_mock)
     notify_mock.expects(:notify).with("title", "msg", "img", 1, 0, 0)
     AutotestNotification::Notify.expects(:guess).with(RUBY_PLATFORM).returns(notify_mock)
     AutotestNotification::Notify.notify("title", "msg", "img", 1, 0, 0)
@@ -59,6 +69,18 @@ class TestNotify < Test::Unit::TestCase
     assert_equal "1, 2, 3", AutotestNotification::Notify.rspec_message(1,2,3)
   end
   
+  def test_say_when_doom_is_disabled
+    AutotestNotification::Notify.const_set :DOOM_EDITION, false
+    notify_mock = mock()
+    notify_mock.expects(:play_sound).with(1)
+    AutotestNotification::Notify.say(2, 1, notify_mock)
+  end
+  
+  def test_say_when_doom_is_enabled
+    AutotestNotification::Notify.const_set :DOOM_EDITION, true
+    AutotestNotification::Doom.expects(:play_sound).with(2,1)
+    AutotestNotification::Notify.say(2, 1, mock())
+  end
   
   private
   

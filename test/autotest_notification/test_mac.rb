@@ -18,5 +18,20 @@ class TestMac < Test::Unit::TestCase
     assert !AutotestNotification::Mac::Notify.understands_so?("linux")
   end
   
+  def test_play_sound_with_no_failures
+    AutotestNotification::Mac::Notify.expects(:system).with('say All tests passed successfully.')
+    AutotestNotification::Mac::Notify.play_sound(0)
+  end
+  
+  def test_play_sound_with_one_failure
+    AutotestNotification::Mac::Notify.expects(:system).with("say 1 test failed.")
+    AutotestNotification::Mac::Notify.play_sound(1)
+  end
+  
+  def test_play_sound_with_more_them_one_failure
+    AutotestNotification::Mac::Notify.expects(:system).with('say 2 tests failed.')
+    AutotestNotification::Mac::Notify.play_sound(2)
+  end
+  
 end
 

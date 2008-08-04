@@ -51,7 +51,17 @@ module AutotestNotification
       end
       
       def notify(title, msg, img = SUCCESS_IMAGE, total = 1, failures = 0, pri = 0)
-        guess(RUBY_PLATFORM).notify(title, msg, img, total, failures, pri)
+        obj = guess(RUBY_PLATFORM)
+        obj.notify(title, msg, img, total, failures, pri)
+        obj.say(total, failures, obj) if SPEAKING
+      end
+      
+      def say(total, failures, obj)
+        if AutotestNotification::Notify::DOOM_EDITION
+          Doom.play_sound(total, failures)
+        else
+          obj.play_sound(failures)
+        end
       end
 
       def pluralize(text, number)

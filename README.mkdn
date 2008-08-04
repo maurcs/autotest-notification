@@ -1,19 +1,16 @@
-= THE AUTOTEST NOTIFICATION GEM
+# THE AUTOTEST NOTIFICATION GEM
 
-* http://github.com/carlosbrando/autotest-notification/
+    http://github.com/carlosbrando/autotest-notification/
 
-
-== DESCRIPTION:
+## DESCRIPTION:
 
 This gem set the autotest (ZenTest) to send messages to software as Growl, LibNotify, and Snarl, displaying a window with the results.
 
-
-== REQUIREMENTS:
+## REQUIREMENTS:
 
 Independent of operating system you are using, you must install the ZenTest:
 
-	$ gem install ZenTest
-
+    gem install ZenTest
 
 * If you're using a Mac:
     You need to have Growl and growlnotify installed on your machine.
@@ -46,7 +43,7 @@ Independent of operating system you are using, you must install the ZenTest:
     
     Run in the command prompt:
 
-			$ gem install ruby-snarl
+			gem install ruby-snarl
     
     After all that. You must update the environment variable PATH with the path to the bin of diffutils.
     It's the price that was paid for using Windows (try cygwin).
@@ -68,40 +65,40 @@ Independent of operating system you are using, you must install the ZenTest:
 		To hear the sounds of Doom Edition, you need the mplayer [http://www.mplayerhq.hu/design7/dload.html] installed.
 
 
-== INSTALL:
+## INSTALL:
 
-  $ sudo gem install carlosbrando-autotest-notification --source=http://gems.github.com
+    sudo gem install carlosbrando-autotest-notification --source=http://gems.github.com
   
 Run it to let the notifier in automatic mode:
 
-  $ an-install
+    an-install
 
 In Windows without cygwin, it's necessary to install in the directory of the project:
   
-  $ an-install --path=C:\projects\my_project
+    an-install --path=C:\projects\my_project
 
 To turn off the notifier:
   
-  $ an-uninstall
+    an-uninstall
 
 
-== Special Doom Edition
+## Special Doom Edition
 
-	$ an-install --doom --speaking
+    an-install --doom --speaking
 
-== CONTRIBUTORS:
+## CONTRIBUTORS:
 
 * carlosbrando [http://www.nomedojogo.com]
 * simpsomboy [http://alexandredasilva.wordpress.com]
 * urubatan [http://www.urubatan.info]
 * chjunior [http://tas.milk-it.net]
 * daviscabral [http://blog.impactmedia.com.br]
-* tapajos [http://www.improveit.com.br/tapajos]
+* Marcos Tapajós [http://www.improveit.com.br/en/company/tapajos]
 * tchandy [http://tchandy.wordpress.com]
 * ozsantana [http://blog.iconcreative.net/]
 
 
-== LICENSE:
+## LICENSE:
 
 (The MIT License)
 

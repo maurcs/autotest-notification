@@ -4,7 +4,7 @@ require 'rake/testtask'
 require 'rake/rdoctask'
 require 'rake/packagetask'
 require 'rake/gempackagetask'
-require 'rake/contrib/sshpublisher'
+require 'lib/autotest_notification/version'
 
 desc "Default Task"
 task :default => [ :test ]
@@ -17,9 +17,9 @@ Rake::TestTask.new { |t|
   t.warning = false
 }
 
-Gem::Specification.new do |s|
+spec = Gem::Specification.new do |s|
   s.name = %q{autotest-notification}
-  s.version = "1.4.0"
+  s.version = AutotestNotification::VERSION::STRING
 
   s.specification_version = 2 if s.respond_to? :specification_version=
 
@@ -34,15 +34,15 @@ Gem::Specification.new do |s|
   s.has_rdoc = true
   s.homepage = %q{http://github.com/carlosbrando/autotest-notification/}
   s.post_install_message = %q{
-For more information on autotest_notification, see http://github.com/carlosbrando/autotest-notification/
+          For more information on autotest_notification, see http://github.com/carlosbrando/autotest-notification/
 
-To turn on the notifier you need to run the following command:
-  an-install
+          To turn on the notifier you need to run the following command:
+            an-install
 
-To turn off:
-  an-uninstall
+          To turn off:
+            an-uninstall
 
-}
+          }
   s.rdoc_options = ["--main", "README.txt"]
   s.require_paths = ["lib"]
   s.rubyforge_project = %q{autotest-notification}
@@ -54,8 +54,8 @@ To turn off:
 end
 
 
-# Rake::GemPackageTask.new(spec) do |p|
-#   p.gem_spec = spec
-#   p.need_tar = true
-#   p.need_zip = true
-# end
+Rake::GemPackageTask.new(spec) do |p|
+  p.gem_spec = spec
+  p.need_tar = true
+  p.need_zip = true
+end

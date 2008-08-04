@@ -1,6 +1,6 @@
 module AutotestNotification
   class Notify
-    IMAGES_DIRECTORY      = File.expand_path(File.dirname(__FILE__) + "/../images/")
+    IMAGES_DIRECTORY      = File.expand_path(File.dirname(__FILE__) + "/../../images/")
     SUCCESS_IMAGE         = "#{IMAGES_DIRECTORY}/pass.png"
     FAIL_IMAGE            = "#{IMAGES_DIRECTORY}/fail.png"
     EXPIRATION_IN_SECONDS = 3
@@ -51,13 +51,14 @@ module AutotestNotification
       end
       
       def notify(title, msg, img = SUCCESS_IMAGE, total = 1, failures = 0, pri = 0)
+        img = Doom.image(total, failures, IMAGES_DIRECTORY) if DOOM_EDITION
         obj = guess(RUBY_PLATFORM)
         obj.notify(title, msg, img, total, failures, pri)
         obj.say(total, failures, obj) if SPEAKING
       end
       
       def say(total, failures, obj)
-        if AutotestNotification::Notify::DOOM_EDITION
+        if DOOM_EDITION
           Doom.play_sound(total, failures, obj)
         else
           obj.play_sound(failures)

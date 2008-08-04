@@ -58,7 +58,7 @@ module AutotestNotification
       
       def say(total, failures, obj)
         if AutotestNotification::Notify::DOOM_EDITION
-          Doom.play_sound(total, failures)
+          Doom.play_sound(total, failures, obj)
         else
           obj.play_sound(failures)
         end

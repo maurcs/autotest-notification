@@ -77,9 +77,10 @@ class TestNotify < Test::Unit::TestCase
   end
   
   def test_say_when_doom_is_enabled
+    notify_mock = mock()
     AutotestNotification::Notify.const_set :DOOM_EDITION, true
-    AutotestNotification::Doom.expects(:play_sound).with(2,1)
-    AutotestNotification::Notify.say(2, 1, mock())
+    AutotestNotification::Doom.expects(:play_sound).with(2, 1, notify_mock)
+    AutotestNotification::Notify.say(2, 1, notify_mock)
   end
   
   private

@@ -22,6 +22,10 @@ module AutotestNotification
           end
         end
         
+        def play(sound_file)
+          system "#{File.expand_path(File.dirname(__FILE__) + "/../../bin/")}/playsound #{sound_file}"
+        end
+        
       end
     end
   end

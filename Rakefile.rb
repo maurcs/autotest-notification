@@ -29,7 +29,7 @@ spec = Gem::Specification.new do |s|
   s.description = %q{This gem set the autotest (ZenTest) to send messages to software as Growl, LibNotify, and Snarl, displaying a window with the results.}
   s.email = ["eduardobrando@gmail.com"]
   s.executables = ["an-install", "an-uninstall", "playsound"]
-  s.extra_rdoc_files = ["History.txt", "License.txt", "README.txt"]
+  s.extra_rdoc_files = ["History.txt", "License.txt", "README.mkdn"]
   s.files = Dir.glob( "lib/**/*" ) + Dir.glob( "images/**/*" ) + Dir.glob( "sounds/**/*" ) 
   s.has_rdoc = true
   s.homepage = %q{http://github.com/carlosbrando/autotest-notification/}
@@ -43,7 +43,7 @@ spec = Gem::Specification.new do |s|
             an-uninstall
 
           }
-  s.rdoc_options = ["--main", "README.txt"]
+  s.rdoc_options = ["--main", "README.mkdn"]
   s.require_paths = ["lib"]
   s.rubyforge_project = %q{autotest-notification}
   s.rubygems_version = %q{1.1.1}

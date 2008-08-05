@@ -53,6 +53,18 @@ spec = Gem::Specification.new do |s|
   s.add_dependency(%q<ZenTest>, [">= 3.9.2"])
 end
 
+namespace :gem do
+  namespace :spec do
+    desc "Update dejour.gemspec"
+    task :generate do
+      File.open("autotest-notification.gemspec", "w") do |f|
+        f.puts(spec.to_ruby)
+      end
+    end
+  end
+end
+
+
 
 Rake::GemPackageTask.new(spec) do |p|
   p.gem_spec = spec

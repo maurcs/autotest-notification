@@ -4,6 +4,10 @@ module AutotestNotification
     SUCCESS_IMAGE         = "#{IMAGES_DIRECTORY}/pass.png"
     FAIL_IMAGE            = "#{IMAGES_DIRECTORY}/fail.png"
     EXPIRATION_IN_SECONDS = 3
+    Autotest.add_hook :initialize do |at|
+      at.sleep = 5
+      %w{.svn .git public vendor}.each { |exception| at.add_exception(exception) }
+    end
     Autotest.add_hook :ran_command do |at|
       result = at.results.is_a?(Array) ? at.results.last : at.results.split("\n").last
 

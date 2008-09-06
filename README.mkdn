@@ -93,9 +93,12 @@ To turn off the notifier:
 * urubatan [http://www.urubatan.info]
 * chjunior [http://tas.milk-it.net]
 * daviscabral [http://blog.impactmedia.com.br]
-* Marcos Tapajós [http://www.improveit.com.br/en/company/tapajos]
+* tapajos [http://www.improveit.com.br/en/company/tapajos]
 * tchandy [http://tchandy.wordpress.com]
 * ozsantana [http://blog.iconcreative.net/]
+
+
+
 
 
 ## LICENSE:
